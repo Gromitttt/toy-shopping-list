@@ -34,8 +34,8 @@
 
   /* Size */
   --size-max-width: 390px;
-  --size-max-height: 844px;
-  --size--list-height: 540px;
+  --size-max-height: 780px;
+  --size--list-height: 480px;
 
   /* Opacity */
   --opacity-line: 0;
