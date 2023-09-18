@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping List</title>
+  <meta name="description" content="Toy project - Shopping list" />
+  <meta name="author" content="Areum Kim"/>
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+  <script src="https://kit.fontawesome.com/b818289206.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css">
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header__logo">My Shopping List</div>
+      <p class="header__des">Write your shopping list for today</p>
+    </header>
+  
+    <main>
+      <section id="list">
+        <ul class="list">
+        </ul>
+      </section>
+
+      <section id="input">
+        <button class="btn__clear">clear shopping list</button>
+        <div class="line"></div>
+        <div class="form">
+          <input type="text" class="input__text__box"/>
+          <button type="submit" class="input__submit">
+            <i class="fa-solid fa-circle-plus"></i>
+          </button>
+        </div>        
+      </section>
+    </main>
+  </div>
+</body>
+</html>
