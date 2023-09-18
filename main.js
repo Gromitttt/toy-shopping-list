@@ -63,6 +63,9 @@ function addItem() {
   if (!!text.trim()) {
     const item = createListItem(text);
     list.appendChild(item);
+
+    item.scrollIntoView({block: 'center'});
+
     textBox.value = '';
     textBox.focus();
   } else {
@@ -82,7 +85,7 @@ btnClear.addEventListener('click', () => {
 textBox.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
     e.preventDefault();
-    btnSubmit.click();
+    addItem();
   }
 });
 
