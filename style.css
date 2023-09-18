@@ -113,12 +113,12 @@ header {
   margin-bottom: 0.8rem;
 }
 
-.list__item__info {
+.list__item__name {
   max-width: 75%;
   font-size: 1.6rem;
 }
 
-.list__item__info::after {
+.list__item__name::after {
   content: '';
   display: block;
   width: 100%;
@@ -138,7 +138,7 @@ header {
 }
 
 
-/* Input */
+/* Footer */
 footer {
   width: 90%;
   margin: 0 auto;
