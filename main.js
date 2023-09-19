@@ -5,7 +5,6 @@ const ICON_UNCHECKED = 'fa-regular';
 const STATUS_CHECKED = 'checked';
 const STATUS_UNCHECKED = 'unchecked';
 
-
 const list = document.querySelector('.list');
 const textBox = document.querySelector('.input__text__box');
 const btnSubmit = document.querySelector('.input__submit');
@@ -36,9 +35,10 @@ function createListItem(text) {
 list.addEventListener('click', e => {
   const data = e.target.dataset;
   const id = data.id;
-  const name = data.name;
-
+  
   if(id) {
+    const name = data.name;
+    
     if (name === 'delete') {
       const toBeDeleted = document.querySelector(`.list__item[data-id="${id}"]`);
       toBeDeleted.remove();
