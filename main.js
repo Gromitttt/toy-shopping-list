@@ -38,7 +38,7 @@ list.addEventListener('click', e => {
   
   if(id) {
     const name = data.name;
-    
+
     if (name === 'delete') {
       const toBeDeleted = document.querySelector(`.list__item[data-id="${id}"]`);
       toBeDeleted.remove();
@@ -91,9 +91,10 @@ btnClear.addEventListener('click', () => {
   list.innerHTML = '';
 });
 
-textBox.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter') {
-    e.preventDefault();
+textBox.addEventListener('keydown', (e) => {
+  if (e.isComposing) return;
+  
+  if (e.key === 'Enter') { 
     addItem();
   }
 });
