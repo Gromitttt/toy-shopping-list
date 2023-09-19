@@ -1,61 +1,70 @@
 'use strict';
 
+const ICON_CHECKED = 'fa-solid';
+const ICON_UNCHECKED = 'fa-regular';
+const STATUS_CHECKED = 'checked';
+const STATUS_UNCHECKED = 'unchecked';
+
+
 const list = document.querySelector('.list');
 const textBox = document.querySelector('.input__text__box');
 const btnSubmit = document.querySelector('.input__submit');
 const btnClear = document.querySelector('.btn__clear');
 
+let id = 0;
+
 function createListItem(text) {
   const itemRow = document.createElement('li');
   itemRow.setAttribute('class', 'list__item');
+  itemRow.setAttribute('data-id', id);
+  itemRow.innerHTML = `
+    <span class="list__item__name" data-id=${id}>• ${text}</span>
+    <div>
+      <button class="list__item__btn-check">
+        <i class="fa-regular fa-circle-check" data-id=${id} data-name="check" data-status="unchecked"></i>
+      </button>
+      <button class="list__item__btn-delete">
+        <i class="fa-solid fa-eraser" data-id=${id} data-name="delete"></i>
+      </button>
+    </div>
+  `;
 
-  const name = document.createElement('span');
-  name.setAttribute('class', 'list__item__name');
-  name.innerText = `• ${text}`;
-
-  const wrapper = document.createElement('div');
-
-  const btnCheck = document.createElement('button');
-  btnCheck.setAttribute('class', 'list__item__btn-check');
-  btnCheck.innerHTML = '<i class="fa-regular fa-circle-check"></i>';
-  btnCheck.addEventListener('click', () => {
-    const item = btnCheck.firstChild;
-    const checked = 'fa-solid';
-    const unchecked = 'fa-regular';
-
-    let prev;
-    let changed;
-    let opacity;
-
-    if (item.classList[0] === unchecked) {
-      prev = unchecked;
-      changed = checked;
-      opacity = '1';
-    } else {
-      prev = checked;
-      changed = unchecked;
-      opacity = '0';
-    }
-
-    item.classList.replace(prev, changed);
-    name.style.setProperty('--opacity-line', opacity);
-  });
-
-  const btnDelete = document.createElement('button');
-  btnDelete.setAttribute('class', 'list__item__btn-delete');
-  btnDelete.innerHTML = '<i class="fa-solid fa-eraser"></i>';
-  btnDelete.addEventListener('click', () => {
-    list.removeChild(itemRow);
-  });
-  
-  wrapper.appendChild(btnCheck);
-  wrapper.appendChild(btnDelete);
-
-  itemRow.appendChild(name);
-  itemRow.appendChild(wrapper);
-
+  id++;
   return itemRow;
 }
+
+list.addEventListener('click', e => {
+  const data = e.target.dataset;
+  const id = data.id;
+  const name = data.name;
+
+  if(id) {
+    if (name === 'delete') {
+      const toBeDeleted = document.querySelector(`.list__item[data-id="${id}"]`);
+      toBeDeleted.remove();
+    } else if (name === 'check') {
+      const toBeChanged = document.querySelector(`.list__item__name[data-id="${id}"]`);
+      let prev;
+      let changed;
+      let opacity;
+
+      if (data.status === STATUS_UNCHECKED) {
+        prev = ICON_UNCHECKED;
+        changed = ICON_CHECKED;
+        opacity = '1';
+        data.status = STATUS_CHECKED;
+      } else {
+        prev = ICON_CHECKED;
+        changed = ICON_UNCHECKED;
+        opacity = '0';
+        data.status = STATUS_UNCHECKED;
+      }
+
+      e.target.classList.replace(prev, changed);
+      toBeChanged.style.setProperty('--opacity-line', opacity);
+    }
+  }
+});
 
 function addItem() {
   const text = textBox.value;
