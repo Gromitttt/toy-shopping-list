@@ -9,6 +9,7 @@ const list = document.querySelector('.list');
 const textBox = document.querySelector('.input__text__box');
 const btnSubmit = document.querySelector('.input__submit');
 const btnClear = document.querySelector('.btn__clear');
+const form = document.querySelector('.form');
 
 let id = 0;
 
@@ -83,19 +84,11 @@ function addItem() {
   }
 }
 
-btnSubmit.addEventListener('click', () => {
-  addItem();
-});
-
 btnClear.addEventListener('click', () => {
   list.innerHTML = '';
 });
 
-textBox.addEventListener('keydown', (e) => {
-  if (e.isComposing) return;
-  
-  if (e.key === 'Enter') { 
-    addItem();
-  }
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  addItem();
 });
-
