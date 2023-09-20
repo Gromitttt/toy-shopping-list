@@ -1,4 +1,4 @@
-/* 눈누 - 어비 진건체 */
+/* 폰트 스타일 정의 */
 @font-face {
   font-family: 'UhBeeJin-gun';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeJin-gun.woff') format('woff');
@@ -6,7 +6,6 @@
   font-style: normal;
 }
 
-/* 눈누 - KBO 다이아고딕체 */
 @font-face {
   font-family: 'KBO-Dia-Gothic_bold';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/KBO-Dia-Gothic_bold.woff') format('woff');
@@ -14,6 +13,7 @@
   font-style: normal;
 }
 
+/* 변수 정의 */
 :root { 
   --bs-body-font-family: 'UhBeeJin-gun';
 
